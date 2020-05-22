@@ -1,0 +1,40 @@
+RPF_pooled_fastq_file: "/Users/sekaran/ownCloud/conda_xtender/fastq/Pooled_RPFs.fastq"
+mRNA_pooled_fastq_file: "/Users/sekaran/ ⁨MPI_Muenster/Final_PhD_analysis/Alignment_rate_Original_vs_Extended/mRNA/Only_extended_and_orignal/Pooled_mRNA.fastq"
+Tophat2_output: "/Users/sekaran/ownCloud/conda_xtender/Tophat2"
+Tophat2_RPF_bam: "/Users/sekaran/ownCloud/conda_xtender/Tophat2_alignment/RPF_direct_alignment_non-splice.bam"
+Tophat2_mRNA_bam: "/Users/sekaran/ownCloud/conda_xtender/Tophat2_alignment/mRNA_accepted_hits.bam"
+
+transcriptome_fasta_file: "/Users/sekaran/ownCloud/conda_xtender/transcriptome_fasta/dd_Smed_v6.pcf.contigs.fasta"
+transcriptome_dir: "/Users/sekaran/ownCloud/conda_xtender/transcriptome_fasta"
+transcriptome_fasta: "dd_Smed_v6.pcf.contigs.fasta"
+transcriptome_db_title: "blastdb_dd_Smed_v6_seqs"
+
+transdecoder_output_dir: "/Users/sekaran/ownCloud/conda_xtender/transdecoder_annotation"
+
+Uniprot_dir: "/Users/sekaran/ownCloud/conda_xtender/Uniprot_db"
+Uniprot_db_title: "Uniprot_KB_SP_seqs"
+Uniprot_fasta: "uniprot_all.fasta"
+max_blast_targets: 10
+blast_min_eval: .001
+blastx_output_dir: "/Users/sekaran/ownCloud/conda_xtender/blastx_output"
+
+Pfam_hmm: "/Users/sekaran/ownCloud/conda_xtender/Pfam/Pfam-A_v31.hmm"
+Pfam_dir: "/Users/sekaran/ownCloud/conda_xtender/Pfam"
+
+genome_dir: "/Users/sekaran/ownCloud/conda_xtender/Genome_fasta"
+genome: "/Users/sekaran/ownCloud/conda_xtender/Genome_fasta/SmedAsxl_genome_v1.1.fa"
+gmap_db_name: "gmap_db"
+Gmap_db: "/Users/sekaran/ownCloud/conda_xtender/gmap_db"
+Gmap_dir: "/Users/sekaran/ownCloud/conda_xtender/gmap_dir"
+
+transcript_location_in_genome: "/Users/sekaran/ownCloud/conda_xtender/transcript_location_in_genome"
+
+three_prime_extensions: "/Users/sekaran/ownCloud/conda_xtender/three_prime_extensions"
+five_prime_extensions: "/Users/sekaran/ownCloud/conda_xtender/five_prime_extensions"
+internal_extensions: "/Users/sekaran/ownCloud/conda_xtender/internal_extensions"
+
+search_length: 200
+
+Novel_transcripts_dir: "/Users/sekaran/ownCloud/conda_xtender/Novel_transcripts"
+planariode_fasta: "/Users/sekaran/ownCloud/conda_xtender/Fragmented_transcripts/non-redundant_planarian_nucleotide_seq.fasta"
+Fragmented_transcripts_dir: "/Users/sekaran/ownCloud/conda_xtender/Fragmented_transcripts"
