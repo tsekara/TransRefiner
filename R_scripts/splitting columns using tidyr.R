@@ -1,0 +1,1 @@
+separate(seq_table, Description, into = c("Description", "gn", "os"), sep = "[a-z]+=",extra="drop")

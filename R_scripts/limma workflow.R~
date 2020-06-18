@@ -1,0 +1,60 @@
+                                            
+    ############################################## LIMMA ###################################################
+### Loading reauired libraries ##############
+library("limma")
+library("edgeR")
+#Assuming the counts generated samtools idxstats. The Count data file for each sample can be integrated into a matrix file using the following script ########  
+counts.df=NULL
+experiment.names <- c("control_1","control_2","control_3","lhx1_1","lhx1_2","lhx1_3","pitx_1","pitx_2");
+for(expName in experiment.names)
+{
+  reads.df <- read.delim(sprintf("%s_idxcounts.txt",expName),col.names = c("refName","refLength","mapped","unmapped"));
+  counts.df <- cbind(counts.df, reads.df$mapped);
+}
+rownames(counts.df) <- reads.df$refName;
+colnames(counts.df) <- experiment.names;
+########### samplesheet creation ####################    
+samplesheet=data.frame(row.names=colnames(counts.df),condition=c("control","control","control","lhx1","lhx1","lhx1","pitx","pitx"))
+######## Creating Desing matrix ########################    
+design=model.matrix(~0+samplesheet$condition)
+colnames(design)=c("control","lhx1","pitx")
+###################### Creating a Contrast matrix #######################
+cont.matrix=makeContrasts("control-lhx1","control-pitx",levels=design)
+############ Filtering very low counts whose sum of counts is less than 10 ################      
+isexp=rowSums(cpm(counts.df) > 10) >= 2
+counts.df <- counts.df[isexpr,]
+############ Creating the DGE list from count data #####################    
+dge=DGEList(counts=counts.df)
+dge <- calcNormFactors(dge)
+v <- voom(dge,design,plot=TRUE)
+######## LIMMA pipeline for DEGs for only two conditions ######################
+fit=lmFit(v,design)
+fit=ebayes(fit)    
+topTable(fit, adjust="BH")
+############ LIMMA pipeline for DEGs for several conditions ########################
+fit2=contrasts.fit(fit,cont.matrix)
+fit2=eBayes(fit2)    
+topTable(fit2,coef="control-lhx1",adjust="BH")) ####### Toptable for condition1 #######
+topTable(fit2,coef="control-pitx",adjust="BH")) ####### Toptable for condition2 #######    
+toptable(fit2,adjust="BH") #################### Toptable for both condition ###########
+
+results= decideTests(fit2) ################### It assigns the outcome of every condition #####  
+vennDiagram(results)
+
+######### to find ANOVA and display top 30 genes ###################
+topTableF(fit2, number=30)
+
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    

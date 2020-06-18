@@ -1,0 +1,4 @@
+m <- gregexpr("Protein: (.*?)\n", x <- strsplit(paste(rbp$V1, collapse = "\n"), "************************************************************************************************", fixed = TRUE)[[1]])
+proteins <- lapply(regmatches(x, m), function(x) sub("Protein: (.*)\n", "\\1", x))
+names <- sub(".*?([A-z0-9_]+)\n.*", "\\1", x)
+data.sprintf("%s %s", names, sapply(proteins, paste, collapse = ";"))

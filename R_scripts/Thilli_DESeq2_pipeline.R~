@@ -1,0 +1,24 @@
+
+
+
+
+for(i in 1:dim(dd_vs_srg12_tr5_cthulu)[1])
+{
+  if(dd_vs_srg12_tr5_cthulu$Trans_ID_strand_percentage[i] != "" && dd_vs_srg12_tr5_cthulu$Dresden_Transcript_ID[i] == "")
+  {
+    dd_vs_srg12_tr5_cthulu$Dresden_Transcript_ID[i] = dd_vs_srg12_tr5_cthulu$Dresden_Transcript_ID[i-1]
+  }
+}
+
+
+
+
+
+required = aggregate(Trans_ID_strand_percentage ~ Trans_ID_strand_percentage , data = dd_vs_srg12_tr5_cthulu, paste, collapse = "|")
+
+
+for(gene in head(rownames(sig.ordered))) {
+  boxplot(vsd[gene,which(conditions=="Control")],vsd[gene,
+                                          which(conditions=="DNAH11")],main=paste (gene,signif(sig[gene,"padj"],2)),names=c("Control","DNAH11"))
+  readline()
+}
